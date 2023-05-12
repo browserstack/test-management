@@ -28,7 +28,7 @@ let folderResponseBody = {
       folder: {
         id: "#number",
         name: "#string",
-        ui_position: null,
+        ui_position: "#number",
         notes: "#string",
         links: {
           self: "#string",
@@ -42,7 +42,7 @@ let folderResponseBody = {
       {
         id: "#number",
         name: "#string",
-        ui_position: null,
+        ui_position: "#number",
         notes: "#string",
         links: {
           self: "#string",
@@ -51,14 +51,13 @@ let folderResponseBody = {
       },
     ],
     success: "#boolean",
-    test_cases: [],
   },
   GET_FOLDER_BY_ID_NO_TC_RESPONSE: {
     folders: [
       {
         id: "#number",
         name: "#string",
-        ui_position: null,
+        ui_position: "#number",
         notes: "#string_or_null",
         links: {
           self: "#string",

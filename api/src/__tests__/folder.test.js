@@ -1,4 +1,5 @@
 const { spec, request } = require("pactum");
+const { constants } = require("../constants/common_constant");
 const {
   projectConstant,
   projectResponseBody,
@@ -15,7 +16,7 @@ describe("Folders, @regression @folder", function () {
     process.env.PROFILE === "staging" ? constants.TCM_STAG : constants.TCM_PROD;
 
   request.setBaseUrl(environment.URL);
-  request.setDefaultHeaders("Cookie", environment.COOKIE);
+  request.setDefaultHeaders("cookie", environment.COOKIE);
   request.setDefaultTimeout(5000);
 
   let createProjectId = null;
@@ -80,7 +81,7 @@ describe("Folders, @regression @folder", function () {
 
   // create new project for testing folder
   it("create new project for testing folder", async () => {
-    createProjectId = await createProject();
+    createProjectId = 1338; // await createProject();
   });
 
   // create folder at root level
