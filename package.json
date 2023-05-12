@@ -1,0 +1,22 @@
+{
+  "name": "nightwatch_automation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test:api:project": "jest project.test.js --detectOpenHandles",
+    "test:api:folder": "jest folder.test.js --detectOpenHandles",
+    "test:api:testcase": "jest testcase.test.js --detectOpenHandles",
+    "test:api": "npm run test:api:project && npm run test:api:folder && npm run test:api:testcase --detectOpenHandles"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.4.1",
+    "pactum": "latest"
+  },
+  "dependencies": {
+    "chai": "^4.3.7"
+  }
+}
