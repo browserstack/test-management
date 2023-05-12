@@ -2,7 +2,7 @@ let constants = {
   // PRODUCTION
   TCM_PROD: {
     URL: "https://test-management.browserstack.com",
-    COOKIE: "235ceb0275e0f0effe8d565e662074ce", // tm_production_regression_api@1secmail.com
+    COOKIE: "_bstack_tm_app=efd6473f9f6bb63fd21c607642770230", // tm_production_regression_api@1secmail.com
   },
 
   // STAGING

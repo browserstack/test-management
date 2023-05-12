@@ -11,7 +11,7 @@ describe("Project Test Case, @regression @project", function () {
     process.env.PROFILE === "staging" ? constants.TCM_STAG : constants.TCM_PROD;
 
   request.setBaseUrl(environment.URL);
-  request.setDefaultHeaders("Cookie", environment.COOKIE);
+  request.setDefaultHeaders("cookie", environment.COOKIE);
   request.setDefaultTimeout(1000);
 
   let createProjectId = null;
@@ -24,7 +24,7 @@ describe("Project Test Case, @regression @project", function () {
       "make a post request to /api/v1/projects endpoint to create new projects",
       projectConstant.CREATE_NEW_PROJECT
     )
-      // .withJson({ project: "$F{CreateProjectPayload}" })
+      .withJson({ project: "$F{CreateProjectPayload}" })
       .expectStatus(200)
       .expectJsonLike(projectResponseBody.GET_PROJECT_BY_ID_RESPONSE);
     return res.body.data.project.id;
@@ -47,49 +47,49 @@ describe("Project Test Case, @regression @project", function () {
     createProjectId = await createProject();
   });
 
-  // // edit project by :project_id
-  // it("edit project by id", async () => {
-  //   editProjectId = await createProject();
-  //   res = await spec(
-  //     "make a post request to /api/v1/projects/:project_id/edit endpoint to edit project by id",
-  //     projectConstant.EDIT_PROJECT_BY_ID.replace(":project_id", editProjectId)
-  //   )
-  //     .withJson({ project: "$F{EditProjectPayload}" })
-  //     .expectStatus(200)
-  //     .expectJsonLike(projectResponseBody.GET_PROJECT_BY_ID_RESPONSE);
-  // });
+  // edit project by :project_id
+  it("edit project by id", async () => {
+    editProjectId = await createProject();
+    res = await spec(
+      "make a post request to /api/v1/projects/:project_id/edit endpoint to edit project by id",
+      projectConstant.EDIT_PROJECT_BY_ID.replace(":project_id", editProjectId)
+    )
+      .withJson({ project: "$F{EditProjectPayload}" })
+      .expectStatus(200)
+      .expectJsonLike(projectResponseBody.GET_PROJECT_BY_ID_RESPONSE);
+  });
 
-  // // get project by :project_id
-  // it("get project by id", async () => {
-  //   getProjectId = await createProject();
-  //   await spec(
-  //     "make a get request to /api/v1/projects/:project_id endpoint to get project by id",
-  //     projectConstant.GET_PROJECT_BY_ID.replace(":project_id", getProjectId)
-  //   )
-  //     .expectStatus(200)
-  //     .expectJsonLike(projectResponseBody.GET_PROJECT_BY_ID_RESPONSE);
-  // });
+  // get project by :project_id
+  it("get project by id", async () => {
+    getProjectId = await createProject();
+    await spec(
+      "make a get request to /api/v1/projects/:project_id endpoint to get project by id",
+      projectConstant.GET_PROJECT_BY_ID.replace(":project_id", getProjectId)
+    )
+      .expectStatus(200)
+      .expectJsonLike(projectResponseBody.GET_PROJECT_BY_ID_RESPONSE);
+  });
 
-  // // delete project by :project_id
-  // it("delete project by id", async () => {
-  //   deleteProjectId = await createProject();
-  //   await deleteProject(deleteProjectId);
-  // });
+  // delete project by :project_id
+  it("delete project by id", async () => {
+    deleteProjectId = await createProject();
+    await deleteProject(deleteProjectId);
+  });
 
-  // // get all projects
-  // it("get all projects", async () => {
-  //   await spec(
-  //     "make a get request to /api/v1/projects endpoint to get all projects",
-  //     projectConstant.GET_ALL_PROJECTS
-  //   )
-  //     .expectStatus(200)
-  //     .expectJsonLike(projectResponseBody.GET_ALL_PROJECTS_RESPONSE);
-  // });
+  // get all projects
+  it("get all projects", async () => {
+    await spec(
+      "make a get request to /api/v1/projects endpoint to get all projects",
+      projectConstant.GET_ALL_PROJECTS
+    )
+      .expectStatus(200)
+      .expectJsonLike(projectResponseBody.GET_ALL_PROJECTS_RESPONSE);
+  });
 
-  // // cleanup project regression
-  // it("cleanup project regression", async () => {
-  //   await deleteProject(createProjectId);
-  //   await deleteProject(editProjectId);
-  //   await deleteProject(getProjectId);
-  // });
+  // cleanup project regression
+  it("cleanup project regression", async () => {
+    await deleteProject(createProjectId);
+    await deleteProject(editProjectId);
+    await deleteProject(getProjectId);
+  });
 });

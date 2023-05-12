@@ -1,9 +1,7 @@
-const CREATE_PROJECT_NAME = "New project name created by Pactum JS";
-const CREATE_PROJECT_DESCRIPTION =
-  "New project description created by Pactum JS";
-const EDIT_PROJECT_NAME = "Dummy project name edited by Pactum JS";
-const EDIT_PROJECT_DESCRIPTION =
-  "Dummy project description edited by Pactum JS";
+const CREATE_PROJECT_NAME = "New project created by Pactum JS";
+const CREATE_PROJECT_DESCRIPTION = "Project description created by Pactum JS";
+const EDIT_PROJECT_NAME = "New project edited by Pactum JS";
+const EDIT_PROJECT_DESCRIPTION = "Project description edited by Pactum JS";
 
 let projectConstant = {
   GET_ALL_PROJECTS: "/api/v1/projects",
