@@ -17,6 +17,7 @@ require("../handlers/addAHandler.js");
 describe("Folders, @regression @folder", function () {
   const environment =
     process.env.PROFILE === "staging" ? constants.TCM_STAG : constants.TCM_PROD;
+
   request.setBaseUrl(environment.URL);
   request.setDefaultHeaders("Cookie", environment.COOKIE);
   request.setDefaultTimeout(30000);
