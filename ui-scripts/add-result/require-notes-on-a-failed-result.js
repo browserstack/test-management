@@ -6,12 +6,13 @@
 TM.onBeforeSave('add_result', function (formState) {
   var isEmptyRichText = function (html) {
     if (!html) return true;
-    var text = String(html)
-      .replace(/<[^>]*>/g, '')
-      .replace(/&nbsp;/gi, ' ')
-      .replace(/&[a-z]+;|&#\d+;/gi, '')
-      .replace(/\s+/g, '')
-      .trim();
+
+    // Let the browser parse the markup and read the text back, instead of stripping the
+    // tags with a regular expression. A regex leaves an unterminated tag such as
+    // '<script src=x' untouched, and parsing decodes entities such as &nbsp; for you.
+    // parseFromString only builds a document, so it never runs the markup it is given.
+    var parsed = new DOMParser().parseFromString(String(html), 'text/html');
+    var text = (parsed.body.textContent || '').replace(/\s+/g, '');
     return text.length === 0;
   };
 
