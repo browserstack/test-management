@@ -12,7 +12,7 @@
     "test:report": "PLAYWRIGHT_JUNIT_OUTPUT_NAME=results.xml npx playwright test --config=./playwright-local.config.js --reporter=junit"
   },
   "devDependencies": {
-    "playwright": "~1.17.2",
+    "playwright": "~1.58.2",
     "@playwright/test": "~1.17.2",
     "browserstack-local": "^1.4.8"
   }
